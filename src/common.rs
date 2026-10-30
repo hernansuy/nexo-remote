@@ -2493,6 +2493,21 @@ pub fn rustdesk_interval(i: Interval) -> ThrottledInterval {
 }
 
 pub fn load_custom_client() {
+    #[cfg(windows)]
+    {
+        *config::APP_NAME.write().unwrap() = "NexoRemote".to_owned();
+        // Local-only until the owner configures an accessible self-hosted server.
+        *config::PROD_RENDEZVOUS_SERVER.write().unwrap() = option_env!("NEXO_SERVER")
+            .filter(|server| !server.trim().is_empty())
+            .unwrap_or("127.0.0.1")
+            .to_owned();
+        if let Some(key) = option_env!("NEXO_KEY").filter(|key| !key.trim().is_empty()) {
+            config::DEFAULT_SETTINGS.write().unwrap()
+                .insert(keys::OPTION_KEY.to_owned(), key.to_owned());
+        }
+        config::DEFAULT_LOCAL_SETTINGS.write().unwrap()
+            .insert(keys::OPTION_THEME.to_owned(), "light".to_owned());
+    }
     #[cfg(debug_assertions)]
     if let Ok(data) = std::fs::read_to_string("./custom.txt") {
         read_custom_client(data.trim());

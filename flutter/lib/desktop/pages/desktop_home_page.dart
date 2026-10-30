@@ -24,6 +24,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:window_size/window_size.dart' as window_size;
 import '../widgets/button.dart';
+import '../nexo_brand.dart';
 
 class DesktopHomePage extends StatefulWidget {
   const DesktopHomePage({Key? key}) : super(key: key);
@@ -87,7 +88,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
         ),
       Align(
         alignment: Alignment.center,
-        child: loadLogo(),
+        child: isWindows ? const NexoIdentity() : loadLogo(),
       ),
       buildTip(context),
       if (!isOutgoingOnly) buildIDBoard(context),
@@ -129,7 +130,7 @@ class _DesktopHomePageState extends State<DesktopHomePage>
     return ChangeNotifierProvider.value(
       value: gFFI.serverModel,
       child: Container(
-        width: isIncomingOnly ? 280.0 : 200.0,
+        width: isIncomingOnly ? 280.0 : (isWindows ? 240.0 : 200.0),
         color: Theme.of(context).colorScheme.background,
         child: Stack(
           children: [
@@ -181,7 +182,22 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   buildRightPane(BuildContext context) {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
-      child: ConnectionPage(),
+      child: isWindows
+          ? Padding(
+              padding: const EdgeInsets.all(20),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surface,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: NexoBrand.line),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: ConnectionPage(),
+                ),
+              ),
+            )
+          : ConnectionPage(),
     );
   }
 

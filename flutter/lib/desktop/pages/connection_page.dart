@@ -15,6 +15,7 @@ import 'package:window_manager/window_manager.dart';
 import 'package:flutter_hbb/models/peer_model.dart';
 
 import '../../common.dart';
+import '../nexo_brand.dart';
 import '../../common/formatter/id_formatter.dart';
 import '../../common/widgets/peer_tab_page.dart';
 import '../../common/widgets/autocomplete.dart';
@@ -313,7 +314,7 @@ class _ConnectionPageState extends State<ConnectionPage>
               children: [
                 Flexible(child: _buildRemoteIDTextField(context)),
               ],
-            ).marginOnly(top: 22),
+            ).marginOnly(top: isWindows ? 8 : 22),
             SizedBox(height: 12),
             Divider().paddingOnly(right: 12),
             Expanded(child: PeerTabPage()),
@@ -347,8 +348,11 @@ class _ConnectionPageState extends State<ConnectionPage>
       width: 320 + 20 * 2,
       padding: const EdgeInsets.fromLTRB(20, 24, 20, 22),
       decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(13)),
-          border: Border.all(color: Theme.of(context).colorScheme.background)),
+          color: isWindows && Theme.of(context).brightness == Brightness.light
+              ? NexoBrand.background : null,
+          borderRadius: BorderRadius.all(Radius.circular(isWindows ? 18 : 13)),
+          border: Border.all(color: isWindows
+              ? NexoBrand.line : Theme.of(context).colorScheme.background)),
       child: Ink(
         child: Column(
           children: [

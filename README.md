@@ -1,3 +1,11 @@
+# Nexo Remote
+
+Edición personal para Windows, basada en RustDesk, con identidad azul y blanca y servidor propio configurable. Modificaciones iniciadas el 30 de octubre de 2026.
+
+Consulta [estado y compilación](NEXO-REMOTE.md) y [sistema de diseño](DESIGN-SYSTEM.md). Esta edición aún requiere compilación y validación de conexiones reales. Se conserva la licencia GNU AGPL v3 y la atribución original.
+
+---
+
 <p align="center">
   <img src="res/logo-header.svg" alt="RustDesk - Your remote desktop"><br>
   <a href="#raw-steps-to-build">Build</a> •

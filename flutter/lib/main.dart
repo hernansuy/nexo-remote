@@ -24,6 +24,7 @@ import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'common.dart';
+import 'desktop/nexo_brand.dart';
 import 'consts.dart';
 import 'mobile/pages/home_page.dart';
 import 'mobile/pages/server_page.dart';
@@ -361,7 +362,7 @@ void _runApp(
       navigatorKey: globalKey,
       debugShowCheckedModeBanner: false,
       title: title,
-      theme: MyTheme.lightTheme,
+      theme: isWindows ? NexoBrand.lightTheme(MyTheme.lightTheme) : MyTheme.lightTheme,
       darkTheme: MyTheme.darkTheme,
       themeMode: themeMode,
       home: home,
@@ -498,7 +499,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
           title: isWeb
               ? '${bind.mainGetAppNameSync()} Web Client V2 (Preview)'
               : bind.mainGetAppNameSync(),
-          theme: MyTheme.lightTheme,
+          theme: isWindows ? NexoBrand.lightTheme(MyTheme.lightTheme) : MyTheme.lightTheme,
           darkTheme: MyTheme.darkTheme,
           themeMode: MyTheme.currentThemeMode(),
           home: isDesktop
