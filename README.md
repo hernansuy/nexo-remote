@@ -23,7 +23,7 @@ La primera compilación de Windows está en validación. Todavía no se ha certi
 
 ## Servidor bajo tu control
 
-El homelab ejecutará únicamente el servicio de identificación y negociación hbbs. No se instalará hbbr: pantalla, teclado, audio y archivos deben viajar entre los equipos. Si sus redes impiden la conexión punto a punto, la sesión fallará sin retransmisión. El emparejador debe ser accesible desde los dos equipos. Véase [el despliegue de señalización](deploy/pairing-only/README.md), actualmente preparado y pendiente de autorización operativa.
+El servicio del homelab está preparado y su despliegue queda aplazado por decisión del propietario. Se está evaluando alojar el emparejador en el PC, que siempre participa en las sesiones. La arquitectura prevista usa solo `hbbs`, sin `hbbr`: pantalla, teclado, audio y archivos viajan entre los equipos. Si sus redes impiden el P2P, la sesión fallará sin retransmisión. El emparejador debe ser accesible desde ambos equipos. Véase [el despliegue de señalización](deploy/pairing-only/README.md), preparado y sin ejecutar.
 
 ## Origen y licencia
 

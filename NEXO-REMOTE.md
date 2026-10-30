@@ -22,7 +22,7 @@ Los binarios de prueba no tienen una firma de editor propia. El instalador y el 
 
 ## Servidor propio
 
-El diseño vigente utiliza exclusivamente `hbbs` (identificación y negociación) en un servicio aislado del homelab. No se instalará `hbbr` (retransmisión). Los archivos de instalación están en `deploy/pairing-only/`; el despliegue y la publicación aún no se han ejecutado.
+El servicio preparado utiliza exclusivamente `hbbs` (identificación y negociación), sin `hbbr` (retransmisión). Los archivos están en `deploy/pairing-only/`. El propietario ha decidido aplazar el despliegue del homelab y evaluar el PC como emparejador, porque siempre participa en la sesión. No se ha instalado ni publicado un servicio nuevo en ninguno de los dos.
 
 El emparejador debe ser accesible desde ambos equipos. Ayuda a negociar la conexión directa, pero algunas combinaciones de CG-NAT o redes restrictivas impiden el P2P. En ese caso la sesión fallará sin retransmisión. El homelab recibe identificadores, direcciones y mensajes de control; no se pretende ocultar esos metadatos ni prometer tráfico cero.
 
