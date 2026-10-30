@@ -1,0 +1,32 @@
+[Unit]
+Description=Nexo Remote - device rendezvous only (no session relay)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=nexo-pair
+Group=nexo-pair
+WorkingDirectory=/var/lib/nexo-pair
+StateDirectory=nexo-pair
+StateDirectoryMode=0700
+UMask=0077
+ExecStart=/usr/local/lib/nexo-pair/hbbs
+Environment=ALWAYS_USE_RELAY=N
+Environment=RUST_LOG=info
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+MemoryMax=192M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

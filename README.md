@@ -23,7 +23,7 @@ La primera compilación de Windows está en validación. Todavía no se ha certi
 
 ## Servidor bajo tu control
 
-La conexión directa se utiliza cuando es posible; un servidor de retransmisión propio permite conectar equipos cuando la red impide la conexión directa. El servidor debe poder recibir conexiones desde Internet. Un PC detrás de CG-NAT no puede garantizar esa función por sí solo.
+El homelab ejecutará únicamente el servicio de identificación y negociación hbbs. No se instalará hbbr: pantalla, teclado, audio y archivos deben viajar entre los equipos. Si sus redes impiden la conexión punto a punto, la sesión fallará sin retransmisión. El emparejador debe ser accesible desde los dos equipos. Véase [el despliegue de señalización](deploy/pairing-only/README.md), actualmente preparado y pendiente de autorización operativa.
 
 ## Origen y licencia
 
