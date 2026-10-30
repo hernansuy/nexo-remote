@@ -22,11 +22,11 @@ Los binarios de prueba no tienen una firma de editor propia. El instalador y el 
 
 ## Servidor propio
 
-El servidor OSS consta de `hbbs` (identificación) y `hbbr` (retransmisión). Puede ejecutarse en Windows. La instalación y el control de acceso deben prepararse antes de exponerlo a Internet.
+El diseño vigente utiliza exclusivamente `hbbs` (identificación y negociación) en un servicio aislado del homelab. No se instalará `hbbr` (retransmisión). Los archivos de instalación están en `deploy/pairing-only/`; el despliegue y la publicación aún no se han ejecutado.
 
-Un PC detrás de CG-NAT no garantiza conectividad entrante. Para admitir clientes en distintas operadoras sin depender de los servidores públicos de RustDesk hace falta un punto de retransmisión con acceso público bajo tu control. Puede ser una máquina propia con IP accesible o un servidor alquilado. Un alojamiento alquilado elimina la dependencia del servicio de RustDesk, pero conserva la del proveedor de alojamiento.
+El emparejador debe ser accesible desde ambos equipos. Ayuda a negociar la conexión directa, pero algunas combinaciones de CG-NAT o redes restrictivas impiden el P2P. En ese caso la sesión fallará sin retransmisión. El homelab recibe identificadores, direcciones y mensajes de control; no se pretende ocultar esos metadatos ni prometer tráfico cero.
 
-Para clientes Windows nativos, planificar TCP 21115–21117 y UDP 21116 según el despliegue. No abrir puertos de cliente web si no se usa esa función. Guardar la clave privada fuera del repositorio; solo la pública se incluye en el cliente. Realizar la prueba final desde una segunda conexión a Internet.
+Para clientes Windows nativos, planificar únicamente TCP 21115, TCP 21116 y UDP 21116. No publicar 21117, 21118 ni 21119. Guardar la clave privada fuera del repositorio; solo la pública se incluye en el cliente. Realizar la prueba final desde dos conexiones a Internet distintas y verificar un caso negativo sin P2P.
 
 ## Cambios y superficie de regresión
 
